@@ -1,1 +1,163 @@
+<link rel="stylesheet" type="text/css" media="all" href="<?php echo base_url()?>css/perspectiveRules.css">
+<link rel="stylesheet" type="text/css" media="all" href="<?php echo base_url()?>css/fullcalendar.css">
+<link rel="stylesheet" type="text/css" media="print" href="<?php echo base_url()?>css/fullcalendar.print.css">
 
+<!-- container -->
+<div id="container" class="main">
+
+	<section id="home" class="m_section home">
+		<div class="figuregroup">
+			<div class="figure1"></div>
+			<div class="figure2"></div>
+			<div class="figure3"></div>
+		</div>
+		<div class="article">
+			<h2 class="wow fadeInUp">SAMSUNG SOFTWARE MEMBERSHIP</h2>
+			<p class="txt wow fadeInUp delay">
+				소프트웨어 개발자, 그꿈이 시작되는 곳<br>
+				<strong>삼성소프트웨어멤버십</strong>
+			</p>
+		</div>
+	</section>
+	<section id="ssm" class="m_section ssm">
+		<div class="fill_wrap">
+			<video autoplay loop>
+				<source src="<?php echo base_url(); ?>images/main_ssm.mp4" type="video/mp4">
+			</video>
+		</div>
+		<div class="article">
+			<div class="title wow fadeInUp"><img src="<?php echo base_url(); ?>images/main_ssm_title.png" alt="EXPLORE YOUR POTENTIAL"></div>
+			<p class="txt wow fadeInUp delay">수많은 소망들이 꿈을 이루어가는 기회의 장인 삼성소프트웨어멤버십은 소프트웨어 분야에 우수한 재능을 가지고 있는 대학(원)생을 선발하여 창의력과 열정을 발휘하여 자신의 가치를 찾아 그 잠재력을 최대한 발휘할 수 있도록 최적의 연구/개발 환경과 교육 시스템을 제공하는 삼성전자의 인재 양성 프로그램입니다.</p>
+			<div class="btns wow fadeInUp delay2">
+				<a href="<?php echo base_url(); ?>ssm">삼성소프트웨어멤버십 <span class="more">more</span></a>
+				<a href="<?php echo base_url(); ?>program">프로그램 <span class="more">more</span></a>
+			</div>
+		</div>
+	</section>
+	<!-- <section id="apply" class="m_section apply">
+		<div class="article">
+			<h2 class="wow fadeInUp">지원</h2>
+			<p class="txt wow fadeInUp delay">삼성소프트웨어멤버십은 알고리즘, 코딩에 재능을 가진 열정 넘치는 대학(원)생을 찾고 있습니다. 학년과 전공에 관계없이 알고리즘, 코딩 좀 한다하는 친구들과 함께 여러분의 프로젝트를 시작해보세요!</p>
+			<dl class="wow fadeInUp delay">
+				<dt>11월 상시 모집 일정</dt>
+				<dd>* 서류 접수 : 11월 1일(화) 09:00 ~ 15일 18:00</dd>
+				<dd>* 코딩 전형 : 11월 중 개별 공지</dd>
+			</dl>
+			<a href="http://apply.samsung.co.kr/sswweb" target="_blank" class="btn_more wow fadeInUp delay2">지원하기</a>
+		</div>
+	</section> -->
+	<!-- <section id="program" class="m_section program">
+		<div class="article">
+			<h2 class="wow fadeInUp">프로그램</h2>
+			<p class="txt wow fadeInUp delay">창의력을 발휘한 다양한 과제 활동과 현장 실습, 역량 강화 프로그램까지! 삼성소프트웨어멤버십의 회원들은 어떤 활동을 하고 있을까요?</p>
+			<a href="<?php echo base_url()?>program" class="btn_more wow fadeInUp delay2">더 알아보기</a>
+		</div>
+	</section> -->
+	<section id="calendar" class="m_section calendar">
+		<div class="article">
+			<h2>일정 <small>Calendar</small></h2>
+			<div id="calendar_wrap" class="calendar wow fadeInUp delay">
+			</div>
+		</div>
+	</section>
+	<ul class="navigation">
+		<li><a href="#home">Home</a></li>
+		<li><a href="#ssm">SSM</a></li>
+		<li><a href="#calendar">Calendar</a></li>
+	</ul>
+
+</div>
+<!-- //container -->
+
+<!-- calendar -->
+<script type="text/javascript" src="<?php echo base_url()?>js/moment.min.js"></script>
+<script type="text/javascript" src="<?php echo base_url()?>js/fullcalendar.js"></script>
+<script type="text/javascript" src="<?php echo base_url()?>js/gcal.js"></script>
+<script type="text/javascript" src="<?php echo base_url()?>js/jquery.logosDistort.js"></script>
+
+<script type="text/javascript">
+//browser detect
+var browser = (function() {
+    var s = navigator.userAgent.toLowerCase();
+    var match = /(webkit)[ \/](\w.]+)/.exec(s) ||
+                /(opera)(?:.*version)?[ \/](\w.]+)/.exec(s) ||
+                /(msie) ([\w.]+)/.exec(s) ||
+               !/compatible/.test(s) && /(mozilla)(?:.*? rv:([\w.]+))?/.exec(s) ||
+               [];
+    return { name: match[1] || "", version: match[2] || "0" };
+}());
+
+if ( browser.name == 'msie' && browser.version <= 9 ) {
+} else {
+	if ( $(window).outerWidth() > 900 ) {
+		$(".figuregroup").logosDistort({
+		    effectWeight: 3,
+		    outerBuffer: 1,
+		    elementDepth: 150,
+		    smoothingMultiplier: 3,
+		    directions: [ 1, 1, -1, 1, 1, 1, 1, 1 ],
+		    container: $('.figuregroup')[0],
+		});
+	}
+}
+</script>
+
+<script type="text/javascript">
+$main.init();
+
+// calendar
+$('#calendar_wrap').fullCalendar({
+	isRTL:false,
+	header: {
+		center: 'title',
+		//right: 'month,listYear'
+		right: ''
+	},
+	displayEventTime: false, // don't show the time column in list view
+
+	// THIS KEY WON'T WORK IN PRODUCTION!!!
+	// To make your own Google API key, follow the directions here:
+	// http://fullcalendar.io/docs/google_calendar/
+	googleCalendarApiKey: 'AIzaSyAc_Hz4GsDe0sEsESED5J5IqZnk8p79Eg0',
+
+	// US Holidays
+	//events: 'en.usa#holiday@group.v.calendar.google.com',
+	eventSources: [{
+		googleCalendarId:'ko.south_korea#holiday@group.v.calendar.google.com', 
+		className:'public-event'
+	},
+	{
+		googleCalendarId: 'infossm@samsung.com',
+		className: 'my-event'
+	}],
+	eventClick: function(event) {
+		// opens events in a popup window
+		window.open(event.url, 'gcalevent', 'width=700,height=600');
+		return false;
+	},
+	loading: function(bool) {
+		// $('#loading').toggle(bool);
+	}
+});
+
+var $prev = $("<div class='prev'>▲</div>");
+var $next = $("<div class='next'>▼</div>");
+
+$('.fc-toolbar').prepend($prev);
+$('.fc-toolbar').append($next);
+
+$prev.click(function(){
+	$('#calendar_wrap').fullCalendar('prev');
+	
+});
+
+$next.click(function(){
+	$('#calendar_wrap').fullCalendar('next');
+});
+
+$('.date_title_sub').each(function(idx){
+	$(this).on('click', function(){
+		$('#calendar_wrap').fullCalendar('gotoDate',$(this).attr('data-date'));
+	});
+});
+</script>
